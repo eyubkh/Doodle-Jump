@@ -12,6 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let upTimerId;
     let downTimerId;
     let isJumping = true;
+    let points = 0;
+
+    // plus
+
+    const btn = document.getElementById('btn');
+    const btnOver = document.getElementById('btnOver');
+    const gameOverConteiner = document.querySelector('.gameOver');
+    const counter = document.getElementById('counter');
+    const allPlataforms = document.querySelectorAll('.gird_platform');
 
     function createDoodler() {
         grid.appendChild(doodler);
@@ -111,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             plataform.shift();
             let newPlat = new Plataform(600);
             plataform.push(newPlat);
+            points++;
         }
     }
 
@@ -123,15 +133,30 @@ document.addEventListener('DOMContentLoaded', () => {
             setInterval(movePlataforms, 30);
             jump();
             window.addEventListener('keydown', control);
-            console.log(plataform[0].visual);
         }
     }
 
-    start();
-
     function GameOver() {
-        isGameOver = true;
+        isGameOver = false;
         clearInterval(upTimerId);
         clearInterval(downTimerId);
+        gameOverConteiner.style.display = 'flex';
+        doodler.remove();
+        counter.innerHTML = points;
     }
+
+    //  Plus
+
+    btn.addEventListener('click', () => {
+        btn.style.marginLeft = 1000 + 'px';
+        setTimeout(() => {
+            start();
+        }, 300);
+    });
+
+    btnOver.addEventListener('click', () => {
+        location.reload();
+        // gameOverConteiner.style.display = 'none';
+        // start();
+    });
 });

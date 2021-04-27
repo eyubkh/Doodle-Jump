@@ -3,18 +3,21 @@
     width: 400px;
     height: 600px;
     background-color: yellow;
+    overflow: hidden;
 }
 
-.gird_doodler{
+.gird_doodler {
     position: absolute;
     width: 60px;
     height: 85px;
     background-color: red;
+    transition: left 0.1s ease;
 }
 
-.gird_platform{
+.gird_platform {
     position: absolute;
     width: 85px;
     height: 15px;
     background-color: green;
+    bottom: 0;
 }
